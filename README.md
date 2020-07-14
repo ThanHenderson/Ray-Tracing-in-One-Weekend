@@ -1,4 +1,4 @@
-##Resources
+## Resources
 
 https://raytracing.github.io/books/RayTracingInOneWeekend.html
 https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
