@@ -1,3 +1,6 @@
+# Ray Tracing in One* Weekend
+
+
 ## Resources
 
 https://raytracing.github.io/books/RayTracingInOneWeekend.html
@@ -10,3 +13,6 @@ https://stackoverflow.com/questions/3339302/set-a-virtual-function-declaration-t
 https://www.learncpp.com/cpp-tutorial/variable-assignment-and-initialization/
 https://www.tutorialspoint.com/cplusplus/cpp_overloading.htm
 https://en.cppreference.com/w/cpp/language/virtual
+
+
+*more like one and a half
