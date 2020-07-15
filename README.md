@@ -1,8 +1,8 @@
 # Ray Tracing in One* Weekend
 
-Based from the _Ray Tracing in One Weekend_ book written by Peter Shirley.
+Based from the _Ray Tracing in One Weekend_ book written by Peter Shirley that can be found here: https://raytracing.github.io/books/RayTracingInOneWeekend.html. It is the first book in his ray tracing trilogy.
 
-I chose this project to get some insight into ray tracing, introduce myself to the world of rendering techniques, and learn C++. As such, there are a lot of comments in the code, some just on C++ syntax and others on ray tracing techniques from the book. It was far and away my favourite project to complete to date. 
+I chose this project to get some insight into ray tracing, introduce myself to the world of rendering techniques, and learn C++. As such, there are a lot of comments in the code, some just on C++ syntax and others on ray tracing techniques from the book. It was far and away my favourite project to complete to date. With ray tracing being "embarassingly parallel", I plan to set up the code to run on the GPU.
 
 ## Resources
 
