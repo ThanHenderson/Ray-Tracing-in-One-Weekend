@@ -4,6 +4,11 @@ Based from the _Ray Tracing in One Weekend_ book written by Peter Shirley that c
 
 I chose this project to get some insight into ray tracing, introduce myself to the world of rendering techniques, and learn C++. As such, there are a lot of comments in the code, some just on C++ syntax and others on ray tracing techniques from the book. It was far and away my favourite project to complete to date. With ray tracing being "embarassingly parallel", I plan to set up the code to run on the GPU.
 
+<p align="center">
+    <img src="images\final\images\final.png" width="400">
+</p>
+
+
 ## Resources
 
 https://raytracing.github.io/books/RayTracingInOneWeekend.html
