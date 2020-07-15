@@ -57,33 +57,55 @@ colour ray_colour(const ray& r, const hittable& world, int depth) {
     return (1.0 - t) * colour(1.0, 1.0, 1.0) + t * colour(0.5, 0.7, 1.0);
 }
 
+hittable_list snowman_scene() {
+    hittable_list world;
+
+    auto ground_material = make_shared<lambertian>(colour(0.6, 0.1, 0.1));
+    world.add(make_shared<sphere>(point3(0, -1000.0, 0), 1000, ground_material));
+
+    //  Bottom
+    auto material1 = make_shared<metal>(colour(0.5, 0.5, 0.5), 0.0);
+    world.add(make_shared<sphere>(point3(0, 1, 0), 1.0, material1));
+
+    // Middle
+    auto material2 = make_shared<metal>(colour(0.5, 0.5, 0.5), 0.0);
+    world.add(make_shared<sphere>(point3(0, 2.3, 0), 0.7, material2));
+
+    // Top
+    auto material3 = make_shared<metal>(colour(0.5, 0.5, 0.5), 0.0);
+    world.add(make_shared<sphere>(point3(0, 3.2, 0), 0.4, material3));
+
+    // Distant Spheres
+    for (int q = -10; q < 10; q++) {
+        auto albedo = colour::random(0.5, 1);
+        auto fuzz = random_double(0.0, 0.5);
+        auto material = make_shared<metal>(albedo, fuzz);
+        world.add(make_shared<sphere>(point3(q, 0.2, 10.0 * random_double()), 0.2, material));
+    }
+
+    return world;
+}
+
 hittable_list simple_scene() {
     hittable_list world;
 
-    auto ground_material = make_shared<lambertian>(colour(0.1, 0.1, 0.1));
+    auto ground_material = make_shared<lambertian>(colour(0.9, 0.1, 0.1));
     world.add(make_shared<sphere>(point3(0, -1000.0, 0), 1000, ground_material));
 
     for (int m = -5; m < 5; m++) {
-        for (int n = -5; n < 5; n++) {
+        for (int n = 1; n < 3; n++) {
             auto material_roulette = random_double();
-            point3 centre(m + 0.9 * random_double(), 0.1, n + 0.9 * random_double());
+            point3 centre(m + 0.9 * random_double(), 0.2, n + 0.9 * random_double());
 
-            if ((centre - point3(4, 0.2, 0)).length() > 0.9) {
+            if ((centre - point3(2, 0.2, 0)).length() > 0.9) {
                 shared_ptr<material> material;
 
                 if (material_roulette < 0.8) {
-                    // Matte, easier to render
-                    auto albedo = colour::random() * colour::random();
-                    material = make_shared<lambertian>(albedo);
-                    world.add(make_shared<sphere>(centre, 0.2, material));
-                } else if (material_roulette < 0.95) {
-                    // Metal
                     auto albedo = colour::random(0.5, 1);
                     auto fuzz = random_double(0.0, 0.5);
                     material = make_shared<metal>(albedo, fuzz);
                     world.add(make_shared<sphere>(centre, 0.2, material));
                 } else {
-                    // Glass
                     material = make_shared<dielectric>(1.5);
                     world.add(make_shared<sphere>(centre, 0.2, material));
                 }
@@ -91,11 +113,11 @@ hittable_list simple_scene() {
         }
     }
 
-    auto material1 = make_shared<metal>(colour(1.0, 0.5, 0.0), 0.2);
-    world.add(make_shared<sphere>(point3(-2, 0, 0), 1.0, material1));
+    auto material1 = make_shared<metal>(colour(1.0, 0.75, 0.8), 0.0);
+    world.add(make_shared<sphere>(point3(-1, 1, 0), 1.0, material1));
 
     auto material3 = make_shared<metal>(colour(0.7, 0.6, 0.5), 0.0);
-    world.add(make_shared<sphere>(point3(2, 0, 0), 1.0, material3));
+    world.add(make_shared<sphere>(point3(1, 1, 0), 1.0, material3));
 
     return world;
 }
@@ -147,8 +169,8 @@ hittable_list generate_scene() {
 }
 
 int main() {
-    const auto aspect_ratio = 16.0 / 9.0;
-    const int image_width = 480;
+    const auto aspect_ratio = 9.0 / 16.0;
+    const int image_width = 768;
     // w/w/h = h
     const int image_height = static_cast<int>(image_width / aspect_ratio);
     const int samples_per_pixel = 100;
@@ -163,15 +185,25 @@ int main() {
     // auto dist_to_focus = 10.0;
     // auto aperture = 0.1;
 
-    auto world = simple_scene();
+    // Simple scene
+    // auto world = simple_scene();
+
+    // point3 lookfrom(0, 2, 10);
+    // point3 lookat(0, 0, 0);
+    // vec3 vup(0, 1, 0);
+    // auto dist_to_focus = 10.0;
+    // auto aperture = 0.05;
+
+    // Snowman scene
+    auto world = snowman_scene();
 
     point3 lookfrom(0, 2, 10);
-    point3 lookat(0, 0, 0);
+    point3 lookat(0, 2, 0);
     vec3 vup(0, 1, 0);
     auto dist_to_focus = 10.0;
-    auto aperture = 0.1;
+    auto aperture = 0.05;
 
-    camera cam(20, aspect_ratio, lookfrom, lookat, vup, aperture, dist_to_focus);
+    camera cam(30, aspect_ratio, lookfrom, lookat, vup, aperture, dist_to_focus);
 
     std::cout
         << "P3\n"

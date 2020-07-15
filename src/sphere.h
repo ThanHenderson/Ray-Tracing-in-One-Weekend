@@ -51,15 +51,3 @@ bool sphere::hit(const ray& r, double t_min, double t_max, hit_record& rec) cons
     }
     return false;
 }
-
-/**I discovered the studio in 2019 through the Rust game engine Amethyst. My interest in Embark initially stemmed from the idea of using Rust as the programming language of choice. After looking deeper, Embark seemed to be a place with an interesting idea and approach that is filled with knowledgeable and determined industry professionals. 
-
-Being driven by curiosity, I'm excited to see where the studio will grow to.
-
-
-I am particularly interested in graphics and rendering. I'm looking into master's programs for computer graphics planning to focus on light transport simulation and global illumination.
-
-I am looking for an internship beginning in January 2021. But will also be interested in internships and other work placements during my masters degree.
-
-I have no industry experience in computer games programming or graphics programming but I have done a few personal projects in the area.
-**/
