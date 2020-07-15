@@ -8,11 +8,12 @@ I chose this project to get some insight into ray tracing, introduce myself to t
     <img src="/images/final_images/final.png" width="600">
 </p>
 <p align="center">
-    <img src="/images/final_images/final_simple.png" width="600">
-</p>
-<p align="center">
     <img src="/images/final_images/snowman2.png" width="400">
 </p>
+<p align="center">
+    <img src="/images/final_images/final_simple.png" width="600">
+</p>
+
 
 ## Resources
 
