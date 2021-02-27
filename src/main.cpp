@@ -7,15 +7,15 @@
 #include "material.h"
 #include "sphere.h"
 
-/** 
+/**
  * P3 format
- * 
+ *
  * P3
  * 2 2    //ROW, COL
  * 255    //Max colour
  * 255    0   0     0   255   0     //rgb triplets
  * 255  255   0     255 255 255
- * 
+ *
 **/
 
 double hit_sphere(const point3& centre, double radius, const ray& r) {
